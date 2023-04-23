@@ -1,8 +1,5 @@
-import { store } from '~/store'
-import { delay, handleChar } from '~/utils'
-
 export interface WriteParams {
-  appendStyle: (style: string) => void
+  appendStyle?: (style: string) => void
   speed?: number
 }
 
@@ -18,7 +15,7 @@ const endOfSentence = /[？！。~：]$/
 const comma = /\D[，；、]$/
 const endOfBlock = /[^/]\n\n$/
 
-export function write({ appendStyle, speed = 16 }: WriteParams) {
+export function useWrite({ appendStyle = appendStyleTag, speed = import.meta.env.DEV ? 0 : 16 }: WriteParams = {}) {
   let styleBuffer = ''
   const text = ref('')
   const writeSimpleChar = (char: string) => {

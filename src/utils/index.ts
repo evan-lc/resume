@@ -37,3 +37,13 @@ export function handleChar(fullText: string, char: string) {
 }
 
 export const delay = (time: number) => new Promise(resolve => setTimeout(resolve, time))
+
+const styleTag = document.getElementById('style-tag') as HTMLStyleElement
+
+export function appendStyleTag(style: string) {
+  styleTag.textContent += style
+}
+
+export function overWriteStyleTag(style: string) {
+  styleTag.textContent = style
+}
