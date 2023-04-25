@@ -23,8 +23,10 @@ onMounted(async () => {
     if ((e as Error).message === 'SKIP IT') {
       styleText.value.writeToEnd()
       workText.value.showWorkBox()
-      footer.value.end()
     }
+  }
+  finally {
+    footer.value.end()
   }
 })
 </script>
