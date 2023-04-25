@@ -17,7 +17,12 @@ onMounted(async () => {
     await delay(2000)
     await styleText.value.write(2)
   }
-  catch (e) {}
+  catch (e) {
+    if (e.message === 'SKIP IT') {
+      styleText.value.writeToEnd()
+      workText.value.showWorkBox()
+    }
+  }
 })
 </script>
 

@@ -26,7 +26,8 @@ async function showWorkBox() {
     if (flipping || !root.value)
       return
 
-    const dy = e.y
+    const dy = e.deltaY
+    e.preventDefault()
     const half = (root.value.scrollHeight - root.value.clientHeight) / 2
     const pastHalf = flipped.value ? root.value.scrollTop < half : root.value.scrollTop > half
 
@@ -36,6 +37,7 @@ async function showWorkBox() {
       await delay(500)
       root.value.scrollTop = flipped.value ? 9999 : 0
       flipping = false
+      return
     }
 
     root.value.scrollTop += (dy * (flipped.value ? -1 : 1))
@@ -47,7 +49,7 @@ defineExpose({ write, showWorkBox })
 <template>
   <pre v-show="show" id="work-text" ref="root" :class="{ flipped }" class="my-12px">
     <div v-if="preview" v-html="text" /><div v-else>
-      <div class="text" v-html="workText" />
+      <div class="text pb-1200px" v-html="workText" />
       <div class="md" v-html="mdText" />
     </div>
   </pre>
