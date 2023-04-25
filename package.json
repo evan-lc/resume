@@ -54,6 +54,7 @@
     "extends": [
       "@antfu",
       "@unocss"
-    ]
+    ],
+    "ignorePatterns": ["*.yml"]
   }
 }
