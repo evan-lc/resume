@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { marked } from 'marked'
-import workText from '~/configs/work.txt?raw'
+import workText from '~/configs/work.md?raw'
 
 const flipped = ref(false)
 const preview = ref(true)
